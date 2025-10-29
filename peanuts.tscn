@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=12 format=3 uid="uid://b651dluwrvggx"]
 
 [ext_resource type="Script" uid="uid://wderf66mpnyq" path="res://pn_back_to_mm.gd" id="1_fl27e"]
+[ext_resource type="Texture2D" uid="uid://c5ug2fchiktah" path="res://assets/Temp_BarTransparentWithBacking.png" id="1_p47d0"]
+[ext_resource type="Script" uid="uid://c1vciwlybtuhe" path="res://pn_green_pile_controller.gd" id="3_q63m3"]
+[ext_resource type="Script" uid="uid://ccwy77fp00bdg" path="res://pn_red_pile_controller.gd" id="3_xt6dc"]
+[ext_resource type="Texture2D" uid="uid://db6rcibakwevb" path="res://assets/Temp_PinkPeanuts_Dark.png" id="4_ig2on"]
+[ext_resource type="Texture2D" uid="uid://cdv61ddeyu1lm" path="res://assets/Temp_PinkPeanuts_Light.png" id="5_q63m3"]
+[ext_resource type="Texture2D" uid="uid://dp6anid672owo" path="res://assets/Temp_YellowPeanuts_Dark.png" id="7_lng4o"]
+[ext_resource type="Texture2D" uid="uid://cu4limpy32nv5" path="res://assets/Temp_GreenPeanuts_Light.png" id="8_rrbwc"]
+[ext_resource type="Script" uid="uid://cjrmf1rhd4l3d" path="res://pn_yellow_pile_controller.gd" id="9_lng4o"]
+[ext_resource type="Texture2D" uid="uid://dgw5qecaqmyfq" path="res://assets/Temp_GreenPeanuts_Dark.png" id="9_xxkiw"]
+[ext_resource type="Texture2D" uid="uid://bkbw5a5s5rq5g" path="res://assets/Temp_YellowPeanuts_Light.png" id="11_xxkiw"]
 
 [node name="peanuts" type="Node2D"]
+
+[node name="pn_background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_p47d0")
+metadata/_edit_lock_ = true
 
 [node name="pn_back_to_mm" type="Button" parent="."]
 offset_left = 50.0
@@ -12,5 +27,57 @@ offset_bottom = 86.0
 theme_override_font_sizes/font_size = 20
 text = "Back"
 script = ExtResource("1_fl27e")
+metadata/_edit_lock_ = true
+
+[node name="pn_red_pile_controller" type="Area2D" parent="."]
+script = ExtResource("3_xt6dc")
+default_texture = ExtResource("4_ig2on")
+hover_texture = ExtResource("5_q63m3")
+
+[node name="pn_red_pile_sprite" type="Sprite2D" parent="pn_red_pile_controller"]
+position = Vector2(866, 346)
+texture = ExtResource("4_ig2on")
+metadata/_edit_lock_ = true
+
+[node name="pn_red_pile_shape" type="CollisionPolygon2D" parent="pn_red_pile_controller"]
+visible = false
+polygon = PackedVector2Array(809, 348, 820, 319, 835, 311, 856, 309, 875, 314, 905, 337, 927, 345, 936, 357, 936, 372, 928, 383, 901, 388, 882, 391, 865, 395, 843, 396, 828, 393, 811, 386, 800, 382, 793, 369, 797, 357)
+
+[node name="pn_green_pile_controller2" type="Area2D" parent="."]
+script = ExtResource("3_q63m3")
+default_texture = ExtResource("9_xxkiw")
+hover_texture = ExtResource("8_rrbwc")
+
+[node name="pn_green_pile_sprite" type="Sprite2D" parent="pn_green_pile_controller2"]
+position = Vector2(708, 348)
+texture = ExtResource("9_xxkiw")
+metadata/_edit_lock_ = true
+
+[node name="pn_green_pile_shape" type="CollisionPolygon2D" parent="pn_green_pile_controller2"]
+visible = false
+polygon = PackedVector2Array(651, 350, 662, 321, 677, 313, 698, 311, 717, 316, 747, 339, 769, 347, 778, 359, 778, 374, 770, 385, 743, 390, 724, 393, 707, 397, 685, 398, 670, 395, 653, 388, 642, 384, 635, 371, 639, 359)
+metadata/_edit_lock_ = true
+
+[node name="pn_yellow_pile_controller2" type="Area2D" parent="."]
+script = ExtResource("9_lng4o")
+default_texture = ExtResource("7_lng4o")
+hover_texture = ExtResource("11_xxkiw")
+
+[node name="pn_yellow_pile_sprite" type="Sprite2D" parent="pn_yellow_pile_controller2"]
+position = Vector2(552, 350)
+texture = ExtResource("7_lng4o")
+metadata/_edit_lock_ = true
+
+[node name="pn_yellow_pile_shape" type="CollisionPolygon2D" parent="pn_yellow_pile_controller2"]
+visible = false
+position = Vector2(-315, 6)
+polygon = PackedVector2Array(810, 347, 821, 318, 836, 310, 857, 308, 876, 313, 906, 336, 928, 344, 937, 356, 937, 371, 929, 382, 902, 387, 883, 390, 866, 394, 844, 395, 829, 392, 812, 385, 801, 381, 794, 368, 798, 356)
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="pn_back_to_mm" to="pn_back_to_mm" method="_on_pressed"]
+[connection signal="mouse_entered" from="pn_red_pile_controller" to="pn_red_pile_controller" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="pn_red_pile_controller" to="pn_red_pile_controller" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="pn_green_pile_controller2" to="pn_green_pile_controller2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="pn_green_pile_controller2" to="pn_green_pile_controller2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="pn_yellow_pile_controller2" to="pn_yellow_pile_controller2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="pn_yellow_pile_controller2" to="pn_yellow_pile_controller2" method="_on_mouse_exited"]
