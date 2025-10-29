@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2n6dvo2ll2py"]
+
+[ext_resource type="Script" uid="uid://tr1bwxnqxa5o" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://cd70mmjefqv1s" path="res://mm_start_game.gd" id="2_7vrkn"]
+[ext_resource type="Script" uid="uid://bhie5107lhmw6" path="res://mm_quit.gd" id="3_fu7sn"]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="mm_button_box" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 526.0
+offset_top = 174.0
+offset_right = 626.0
+offset_bottom = 474.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mm_start_game" type="Button" parent="mm_button_box"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Start"
+script = ExtResource("2_7vrkn")
+
+[node name="mm_settings" type="Button" parent="mm_button_box"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Settings"
+
+[node name="mm_quit" type="Button" parent="mm_button_box"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Quit"
+script = ExtResource("3_fu7sn")
+
+[connection signal="pressed" from="mm_button_box/mm_start_game" to="mm_button_box/mm_start_game" method="_on_pressed"]
+[connection signal="pressed" from="mm_button_box/mm_quit" to="mm_button_box/mm_quit" method="_on_pressed"]
