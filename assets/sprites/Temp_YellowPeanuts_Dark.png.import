@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbt73sm3ut4h1"
-path="res://.godot/imported/Temp_LeafPlate.png-44e6a5e4271b557363394124976db3dc.ctex"
+uid="uid://dp6anid672owo"
+path="res://.godot/imported/Temp_YellowPeanuts_Dark.png-d6d9ed9a6de9afc3442322022b5d5d6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Temp_LeafPlate.png"
-dest_files=["res://.godot/imported/Temp_LeafPlate.png-44e6a5e4271b557363394124976db3dc.ctex"]
+source_file="res://assets/sprites/Temp_YellowPeanuts_Dark.png"
+dest_files=["res://.godot/imported/Temp_YellowPeanuts_Dark.png-d6d9ed9a6de9afc3442322022b5d5d6b.ctex"]
 
 [params]
 

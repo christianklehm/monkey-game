@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkbw5a5s5rq5g"
-path="res://.godot/imported/Temp_YellowPeanuts_Light.png-a237b85f681e88b0e352cd2e105bd420.ctex"
+uid="uid://c5ug2fchiktah"
+path="res://.godot/imported/Temp_BarTransparentWithBacking.png-e5e5de42d3accd5818fb07613f1f6547.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Temp_YellowPeanuts_Light.png"
-dest_files=["res://.godot/imported/Temp_YellowPeanuts_Light.png-a237b85f681e88b0e352cd2e105bd420.ctex"]
+source_file="res://assets/sprites/Temp_BarTransparentWithBacking.png"
+dest_files=["res://.godot/imported/Temp_BarTransparentWithBacking.png-e5e5de42d3accd5818fb07613f1f6547.ctex"]
 
 [params]
 

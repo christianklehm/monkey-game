@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blc2q0u133atl"
-path="res://.godot/imported/Temp_TinyGreenPeanut.png-50eaa3b6aaa1bce5dc015163df8e4143.ctex"
+path="res://.godot/imported/Temp_TinyGreenPeanut.png-311b89e03f6c78af272ab57558a0baa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Temp_TinyGreenPeanut.png"
-dest_files=["res://.godot/imported/Temp_TinyGreenPeanut.png-50eaa3b6aaa1bce5dc015163df8e4143.ctex"]
+source_file="res://assets/sprites/Temp_TinyGreenPeanut.png"
+dest_files=["res://.godot/imported/Temp_TinyGreenPeanut.png-311b89e03f6c78af272ab57558a0baa3.ctex"]
 
 [params]
 

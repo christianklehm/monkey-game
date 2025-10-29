@@ -5,13 +5,13 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$pn_red_pile_sprite.texture = default_texture
+	$ps_red_pile_sprite.texture = default_texture
 
 func _on_mouse_entered():
-	$pn_red_pile_sprite.texture = hover_texture
+	$ps_red_pile_sprite.texture = hover_texture
 
 func _on_mouse_exited():
-	$pn_red_pile_sprite.texture = default_texture
+	$ps_red_pile_sprite.texture = default_texture
 	
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

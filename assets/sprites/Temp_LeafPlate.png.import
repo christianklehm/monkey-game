@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ug2fchiktah"
-path="res://.godot/imported/Temp_BarTransparentWithBacking.png-9a8b42a163b43249e57415930a927767.ctex"
+uid="uid://dbt73sm3ut4h1"
+path="res://.godot/imported/Temp_LeafPlate.png-a07e94777ee03407a5b2ea4bcd8df3d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Temp_BarTransparentWithBacking.png"
-dest_files=["res://.godot/imported/Temp_BarTransparentWithBacking.png-9a8b42a163b43249e57415930a927767.ctex"]
+source_file="res://assets/sprites/Temp_LeafPlate.png"
+dest_files=["res://.godot/imported/Temp_LeafPlate.png-a07e94777ee03407a5b2ea4bcd8df3d5.ctex"]
 
 [params]
 

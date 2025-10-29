@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdv61ddeyu1lm"
-path="res://.godot/imported/Temp_PinkPeanuts_Light.png-9445e9d2eff62f2f51b428dc2cb887b5.ctex"
+uid="uid://cu4limpy32nv5"
+path="res://.godot/imported/Temp_GreenPeanuts_Light.png-32994dcd78bccfd468486c4a8701d61d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Temp_PinkPeanuts_Light.png"
-dest_files=["res://.godot/imported/Temp_PinkPeanuts_Light.png-9445e9d2eff62f2f51b428dc2cb887b5.ctex"]
+source_file="res://assets/sprites/Temp_GreenPeanuts_Light.png"
+dest_files=["res://.godot/imported/Temp_GreenPeanuts_Light.png-32994dcd78bccfd468486c4a8701d61d.ctex"]
 
 [params]
 
