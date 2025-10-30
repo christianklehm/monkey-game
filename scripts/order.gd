@@ -1,13 +1,18 @@
 extends Node2D
 
-var line_items: Array
-var item_types: Array = ["red", "green", "yellow"]
+var line_items: Dictionary
+#var item_colors: Array = ["red", "green", "yellow"]
 
 func _ready() -> void:
-	name = "Active Order" 
-	for type in item_types:
-		var line_item = {
-			"type": type,
-			"count": randi_range(0,2),
-		}
-		line_items.append(line_item)
+	name = "Active Order"
+	line_items = {
+		"red": randi_range(0,2),
+		"green": randi_range(0,2),
+		"yellow": randi_range(0,2),
+	} 
+	#for color in item_colors:
+		#var line_item = {
+			#"color": color,
+			#"count": randi_range(0,2),
+		#}
+		#line_items.append(line_item)

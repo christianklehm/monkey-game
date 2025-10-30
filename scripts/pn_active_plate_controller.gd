@@ -42,7 +42,21 @@ func clear_plate() -> void:
 	while len(placed_peanuts) > 0:
 		remove_peanut()
 	return
-	
+
+func get_color_count() -> Dictionary:
+	var color_count_dict: Dictionary = {
+		"red": 0,
+		"green": 0,
+		"yellow": 0,
+	}
+	for peanut in placed_peanuts:
+		if peanut.color == "red":
+			color_count_dict["red"] += 1
+		elif peanut.color == "green":
+			color_count_dict["green"] += 1
+		elif peanut.color == "yellow":
+			color_count_dict["yellow"] += 1
+	return color_count_dict
 	
 	
 	

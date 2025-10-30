@@ -1,4 +1,7 @@
 extends Button
 
 func _on_pressed() -> void:
-	print("The order is submitted!")
+	if $"..".order_is_correct():
+		print("The order is correct.")
+	else:
+		print("The order is incorrect.")
