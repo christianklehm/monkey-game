@@ -12,11 +12,11 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	$ps_red_pile_sprite.texture = default_texture
-	
+
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("clicked red")
+			get_node("../ps_active_plate_controller").add_peanut("red")
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
