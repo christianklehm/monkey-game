@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=16 format=3 uid="uid://b651dluwrvggx"]
 
 [ext_resource type="Texture2D" uid="uid://c5ug2fchiktah" path="res://assets/sprites/Temp_BarTransparentWithBacking.png" id="1_0auek"]
 [ext_resource type="Script" uid="uid://wderf66mpnyq" path="res://scripts/pn_back_to_mm.gd" id="2_63tcr"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bkbw5a5s5rq5g" path="res://assets/sprites/Temp_YellowPeanuts_Light.png" id="11_053dl"]
 [ext_resource type="Script" uid="uid://d2bs8wm5tshu1" path="res://scripts/pn_active_plate_controller.gd" id="12_5kjkg"]
 [ext_resource type="Texture2D" uid="uid://dbt73sm3ut4h1" path="res://assets/sprites/Temp_LeafPlate.png" id="13_ki1q6"]
+[ext_resource type="Script" uid="uid://bsyibk0aeq3y7" path="res://scenes/ps_clear_plate_button.gd" id="14_63tcr"]
+[ext_resource type="Script" uid="uid://bct8t502ubqkw" path="res://scenes/ps_submit_order_button.gd" id="15_qhxom"]
 
 [node name="play_scene" type="Node2D"]
 
@@ -89,6 +91,24 @@ visible = false
 polygon = PackedVector2Array(230, 362, 238, 349, 257, 347, 267, 349, 289, 355, 315, 377, 340, 395, 348, 408, 344, 412, 324, 421, 307, 424, 274, 424, 245, 418, 225, 408, 211, 384, 212, 371, 219, 365)
 metadata/_edit_lock_ = true
 
+[node name="ps_clear_plate_button" type="Button" parent="."]
+offset_left = 368.0
+offset_top = 407.0
+offset_right = 402.0
+offset_bottom = 438.0
+text = "🗑️"
+script = ExtResource("14_63tcr")
+metadata/_edit_lock_ = true
+
+[node name="ps_submit_order_button" type="Button" parent="."]
+offset_left = 364.0
+offset_top = 362.0
+offset_right = 404.0
+offset_bottom = 395.0
+text = "✅"
+script = ExtResource("15_qhxom")
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="ps_back_to_mm" to="ps_back_to_mm" method="_on_pressed"]
 [connection signal="mouse_entered" from="ps_red_pile_controller" to="ps_red_pile_controller" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ps_red_pile_controller" to="ps_red_pile_controller" method="_on_mouse_exited"]
@@ -96,3 +116,5 @@ metadata/_edit_lock_ = true
 [connection signal="mouse_exited" from="ps_green_pile_controller2" to="ps_green_pile_controller2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="ps_yellow_pile_controller2" to="ps_yellow_pile_controller2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ps_yellow_pile_controller2" to="ps_yellow_pile_controller2" method="_on_mouse_exited"]
+[connection signal="pressed" from="ps_clear_plate_button" to="ps_clear_plate_button" method="_on_pressed"]
+[connection signal="pressed" from="ps_submit_order_button" to="ps_submit_order_button" method="_on_pressed"]

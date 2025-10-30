@@ -16,9 +16,9 @@ func _input_event(_viewport, event, _shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			remove_peanut()
 
-func get_next_position():
+func get_next_position() -> Vector2:
 	var num_peanuts = len(placed_peanuts)
-	return positions[num_peanuts]	
+	return positions[num_peanuts]
 	
 
 func add_peanut(input_color:String) -> void:
@@ -37,3 +37,18 @@ func remove_peanut() -> void:
 	var last_peanut = placed_peanuts.pop_back()
 	remove_child(last_peanut)
 	last_peanut.queue_free()
+
+func clear_plate() -> void:
+	while len(placed_peanuts) > 0:
+		remove_peanut()
+	return
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
