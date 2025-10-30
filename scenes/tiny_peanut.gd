@@ -12,7 +12,8 @@ extends Node2D
 # Custom initilization funtion to allow for input parameters
 # Must be called manually
 # Params: color is first	 , position vector is second
-func init(input_color: String, input_position: Vector2) -> void:
+func init(input_color: String, input_position: Vector2, input_name: String) -> void:
+	name = input_name
 	color = input_color
 	sprite.position = input_position
 	if color == "red":
