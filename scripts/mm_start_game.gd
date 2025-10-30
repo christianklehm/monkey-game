@@ -11,4 +11,8 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_pressed():
-	get_tree().change_scene_to_file("res://scenes/play_scene.tscn")
+	$ButtonClick.play() # Uses signal from AudioStreamPlayer to play sound
+
+
+func _on_button_click_finished() -> void: # Waits until sound finishes
+	get_tree().change_scene_to_file("res://scenes/play_scene.tscn") # Changes scene

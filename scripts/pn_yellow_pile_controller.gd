@@ -16,6 +16,7 @@ func _on_mouse_exited():
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			$AddPeanutSFX.play()
 			get_node("../ps_active_plate_controller").add_peanut("yellow")
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
