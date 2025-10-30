@@ -15,6 +15,10 @@ run/main_scene="uid://c2n6dvo2ll2py"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [input]
 
 InputEventMouseButton={
