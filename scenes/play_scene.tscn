@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=17 format=3 uid="uid://b651dluwrvggx"]
 
 [ext_resource type="Texture2D" uid="uid://c5ug2fchiktah" path="res://assets/sprites/Temp_BarTransparentWithBacking.png" id="1_0auek"]
+[ext_resource type="Script" uid="uid://dce42qthirrx6" path="res://scripts/play_scene.gd" id="1_dta8y"]
 [ext_resource type="Script" uid="uid://wderf66mpnyq" path="res://scripts/pn_back_to_mm.gd" id="2_63tcr"]
 [ext_resource type="Script" uid="uid://ccwy77fp00bdg" path="res://scripts/pn_red_pile_controller.gd" id="3_qhxom"]
 [ext_resource type="Texture2D" uid="uid://db6rcibakwevb" path="res://assets/sprites/Temp_PinkPeanuts_Dark.png" id="4_dta8y"]
@@ -13,10 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://bkbw5a5s5rq5g" path="res://assets/sprites/Temp_YellowPeanuts_Light.png" id="11_053dl"]
 [ext_resource type="Script" uid="uid://d2bs8wm5tshu1" path="res://scripts/pn_active_plate_controller.gd" id="12_5kjkg"]
 [ext_resource type="Texture2D" uid="uid://dbt73sm3ut4h1" path="res://assets/sprites/Temp_LeafPlate.png" id="13_ki1q6"]
-[ext_resource type="Script" uid="uid://bsyibk0aeq3y7" path="res://scenes/ps_clear_plate_button.gd" id="14_63tcr"]
-[ext_resource type="Script" uid="uid://bct8t502ubqkw" path="res://scenes/ps_submit_order_button.gd" id="15_qhxom"]
+[ext_resource type="Script" uid="uid://bsyibk0aeq3y7" path="res://scripts/ps_clear_plate_button.gd" id="14_63tcr"]
+[ext_resource type="Script" uid="uid://bct8t502ubqkw" path="res://scripts/ps_submit_order_button.gd" id="15_qhxom"]
 
 [node name="play_scene" type="Node2D"]
+script = ExtResource("1_dta8y")
 
 [node name="ps_background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
