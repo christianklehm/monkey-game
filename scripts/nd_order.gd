@@ -10,4 +10,10 @@ func _ready() -> void:
 		"red": randi_range(0,2),
 		"green": randi_range(0,2),
 		"yellow": randi_range(0,2),
-	} 
+	}
+	
+func get_text() -> String:
+	var order_text = "The order is:\n"
+	for item in line_items:
+		order_text += item + " x" + str(line_items[item]) + "\n"
+	return order_text

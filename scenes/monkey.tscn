@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cmgtm01kec6tc"]
+[gd_scene load_steps=3 format=3 uid="uid://cmgtm01kec6tc"]
+
+[ext_resource type="Script" uid="uid://djkvshx63v3n5" path="res://scripts/nd_monkey.gd" id="1_rb1f4"]
+[ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="2_1uot1"]
 
 [node name="Monkey" type="Node2D"]
+script = ExtResource("1_rb1f4")
+
+[node name="monkey_order_display" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_1uot1")
+theme_override_colors/font_color = Color(0.8090343, 0.55057555, 0.27189577, 1)
+theme_override_font_sizes/font_size = 40

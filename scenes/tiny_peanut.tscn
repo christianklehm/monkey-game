@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://biflljfdrob8x"]
 
-[ext_resource type="Script" uid="uid://bqdi7tnd3phfn" path="res://scripts/tiny_peanut.gd" id="1_gpri6"]
+[ext_resource type="Script" uid="uid://bqdi7tnd3phfn" path="res://scripts/nd_tiny_peanut.gd" id="1_gpri6"]
 [ext_resource type="Texture2D" uid="uid://cur5qg1vk7gde" path="res://assets/sprites/Temp_TinyPinkPeanut.png" id="2_bnmg6"]
 [ext_resource type="Texture2D" uid="uid://blc2q0u133atl" path="res://assets/sprites/Temp_TinyGreenPeanut.png" id="3_dehg8"]
 [ext_resource type="Texture2D" uid="uid://e23mw2b5j1vo" path="res://assets/sprites/Temp_TinyYellowPeanut.png" id="4_kxryc"]

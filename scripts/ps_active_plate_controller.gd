@@ -19,7 +19,6 @@ func _input_event(_viewport, event, _shape_idx):
 func get_next_position() -> Vector2:
 	var num_peanuts = len(placed_peanuts)
 	return positions[num_peanuts]
-	
 
 func add_peanut(input_color:String) -> void:
 	if len(placed_peanuts) >= len(positions):
