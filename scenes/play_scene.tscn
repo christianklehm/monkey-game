@@ -144,6 +144,21 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 55.0
 
+[node name="ps_day_info_overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="customer_number_display" type="Label" parent="ps_day_info_overlay"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 59.0
+offset_right = 308.0
+offset_bottom = 99.0
+theme = ExtResource("3_bx6jv")
+theme_override_font_sizes/font_size = 40
+
 [connection signal="pressed" from="ps_back_to_mm" to="ps_back_to_mm" method="_on_pressed"]
 [connection signal="finished" from="ps_back_to_mm/ButtonClick" to="ps_back_to_mm" method="_on_button_click_finished"]
 [connection signal="mouse_entered" from="ps_red_pile_controller" to="ps_red_pile_controller" method="_on_mouse_entered"]

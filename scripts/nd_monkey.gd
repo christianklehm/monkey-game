@@ -21,6 +21,9 @@ func display_order() -> void:
 func display_monkey() -> void:
 	display_order() #Currently, only calls display order
 					#but more features added here later.
+					
+func hide_monkey() -> void:
+	$monkey_order_display.hide()
 	
 func set_monkey_type(input_type: String) -> void:
 	monkey_type = input_type
