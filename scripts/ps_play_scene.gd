@@ -11,7 +11,8 @@ func create_monkey() -> void:
 	active_monkey = new_monkey
 	active_monkey.display_monkey()
 	
-# This function checks whether the peanuts on the plate match the active order.		
+# This function checks whether the peanuts on the plate match the active order.
+# Called by the submit order button		
 func order_is_correct() -> bool:
 	var plate_color_counts = $"ps_active_plate_controller".get_color_count()
 	var check_result = false

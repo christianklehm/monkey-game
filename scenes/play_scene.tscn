@@ -138,6 +138,12 @@ metadata/_edit_lock_ = true
 [node name="AddPeanutSFX" type="AudioStreamPlayer" parent="ps_submit_order_button"]
 stream = ExtResource("9_hjngv")
 
+[node name="order_result_message" type="Label" parent="ps_submit_order_button"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 55.0
+
 [connection signal="pressed" from="ps_back_to_mm" to="ps_back_to_mm" method="_on_pressed"]
 [connection signal="finished" from="ps_back_to_mm/ButtonClick" to="ps_back_to_mm" method="_on_button_click_finished"]
 [connection signal="mouse_entered" from="ps_red_pile_controller" to="ps_red_pile_controller" method="_on_mouse_entered"]
