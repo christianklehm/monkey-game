@@ -5,6 +5,7 @@ func _on_pressed() -> void:
 		$order_result_message.text = "Correct!"
 		$order_result_message.position = Vector2(300, -200) #Coords relative to parent button
 		$order_result_message.show()
+		$correctSoundEffect.play()
 		await get_tree().create_timer(0.8).timeout  # waits 0.8 seconds
 		$order_result_message.hide()
 		$"..".resolve_order()

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Monkey Game"
-run/main_scene="uid://c2n6dvo2ll2py"
+run/main_scene="uid://b651dluwrvggx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
