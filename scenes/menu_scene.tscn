@@ -44,6 +44,7 @@ script = ExtResource("2_482oc")
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="ms_button_box/ms_start_game"]
 stream = ExtResource("3_6od1f")
+bus = &"SFX"
 
 [node name="ms_quit" type="Button" parent="ms_button_box"]
 custom_minimum_size = Vector2(150, 100)
@@ -54,6 +55,7 @@ script = ExtResource("3_u4hxd")
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="ms_button_box/ms_quit"]
 stream = ExtResource("3_6od1f")
+bus = &"SFX"
 
 [connection signal="pressed" from="ms_button_box/ms_start_game" to="ms_button_box/ms_start_game" method="_on_pressed"]
 [connection signal="finished" from="ms_button_box/ms_start_game/ButtonClick" to="ms_button_box/ms_start_game" method="_on_button_click_finished"]
