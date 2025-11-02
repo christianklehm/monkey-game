@@ -1,11 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2n6dvo2ll2py"]
+[gd_scene load_steps=25 format=3 uid="uid://c2n6dvo2ll2py"]
 
 [ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="1_6wmco"]
 [ext_resource type="Script" uid="uid://cd70mmjefqv1s" path="res://scripts/mm_start_game.gd" id="2_482oc"]
+[ext_resource type="Texture2D" uid="uid://bpvv27ad7580a" path="res://assets/sprites/MenuLeafRight.png" id="2_vjll7"]
 [ext_resource type="AudioStream" uid="uid://d32vvurvuiw4p" path="res://assets/sounds/Noisy Click.mp3" id="3_6od1f"]
+[ext_resource type="Texture2D" uid="uid://ut2ig7ganjh7" path="res://assets/sprites/MenuLeafLeft.png" id="3_520ac"]
 [ext_resource type="Script" uid="uid://bhie5107lhmw6" path="res://scripts/mm_quit.gd" id="3_u4hxd"]
+[ext_resource type="Texture2D" uid="uid://bl7758ixui3" path="res://assets/sprites/woodenbacking.png" id="4_520ac"]
 [ext_resource type="Texture2D" uid="uid://blkcss4ekbiva" path="res://assets/icons/AudioIcon.png" id="5_u4hxd"]
 [ext_resource type="Script" uid="uid://bxq5p5t7g4vxp" path="res://scenes/ms_options.gd" id="6_6od1f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axson"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1iahe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_my6g0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6imc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cycrn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_usvko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p05g3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hrt7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1lbo3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcgkg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7vxd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rv080"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yr6mf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikjkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16fa1"]
 
 [node name="menu_scene" type="Control"]
 layout_mode = 3
@@ -17,6 +50,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_6wmco")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -380.0
+offset_top = -192.0
+offset_right = -180.0
+offset_bottom = 8.0
+texture = ExtResource("2_vjll7")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = -193.0
+offset_right = 379.0
+offset_bottom = 7.0
+texture = ExtResource("3_520ac")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -101.0
+offset_right = 52.0
+offset_bottom = -1.0
+texture = ExtResource("4_520ac")
+expand_mode = 1
 
 [node name="ms_button_box" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 100)
@@ -41,6 +100,13 @@ alignment = 2
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 theme = ExtResource("1_6wmco")
+theme_override_colors/font_hover_color = Color(0.90588236, 0.8745098, 0.5921569, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8745098, 0.5921569, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_axson")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1iahe")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_my6g0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_b6imc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cycrn")
 text = "Start"
 script = ExtResource("2_482oc")
 
@@ -52,6 +118,13 @@ bus = &"SFX"
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 theme = ExtResource("1_6wmco")
+theme_override_colors/font_hover_color = Color(0.9058307, 0.87288404, 0.5906135, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8745098, 0.5921569, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_usvko")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p05g3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7hrt7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1lbo3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mcgkg")
 text = "Quit"
 script = ExtResource("3_u4hxd")
 
@@ -82,6 +155,11 @@ alignment = 2
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 theme = ExtResource("1_6wmco")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o7vxd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rv080")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yr6mf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ikjkf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_16fa1")
 icon = ExtResource("5_u4hxd")
 icon_alignment = 1
 script = ExtResource("6_6od1f")
