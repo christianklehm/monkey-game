@@ -1,5 +1,11 @@
 extends Button
 
+@onready var normal_icon = preload("res://assets/icons/CheckMarkIcon.png")
+@onready var hover_icon = preload("res://assets/icons/CheckMarkIconHover.png")
+
+func _ready() -> void:
+	icon = normal_icon
+
 func _on_pressed() -> void:
 	if $"..".order_is_correct():
 		$order_result_message.text = "Correct!"
@@ -17,3 +23,10 @@ func _on_pressed() -> void:
 		$incorrectSoundEffect.play()
 		await get_tree().create_timer(1.0).timeout  # waits 1 second
 		$order_result_message.hide()
+
+
+func _on_mouse_entered() -> void:
+	icon = hover_icon
+
+func _on_mouse_exited() -> void:
+	icon = normal_icon

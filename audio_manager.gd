@@ -12,6 +12,7 @@ func _ready():
 	# Create and add an AudioStreamPlayer to the singleton
 	musicPlayer = AudioStreamPlayer.new()
 	musicPlayer.bus = "Music"          # make sure it routes to the Music bus
+	musicPlayer.connect("finished", Callable(self, "_on_music_finished")) # Makes it so the AudioStream node can signal finished
 	add_child(musicPlayer)
 	play_music(preload("res://assets/sounds/monkey-song-longer.mp3"))
 	
@@ -19,6 +20,9 @@ func _ready():
 func play_music(stream: AudioStream):
 	musicPlayer.stream = stream
 	musicPlayer.play()
+
+func _on_music_finished():                                               # Should trigger the song to repeat when it finishes
+	play_music(preload("res://assets/sounds/monkey-song-longer.mp3"))
 
 func set_sfx_volume(linear: float) -> void: # translates bus decibels to be changed later in settings
 	# linear expected in [0.0, 1.0]

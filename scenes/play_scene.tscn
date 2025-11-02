@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=36 format=3 uid="uid://b651dluwrvggx"]
 
 [ext_resource type="Script" uid="uid://dce42qthirrx6" path="res://scripts/ps_play_scene.gd" id="1_dta8y"]
 [ext_resource type="Texture2D" uid="uid://boemdo31mm14u" path="res://assets/sprites/Background.png" id="2_053dl"]
@@ -21,8 +21,30 @@
 [ext_resource type="Script" uid="uid://bsyibk0aeq3y7" path="res://scripts/ps_clear_plate_button.gd" id="14_63tcr"]
 [ext_resource type="Script" uid="uid://bct8t502ubqkw" path="res://scripts/ps_submit_order_button.gd" id="15_qhxom"]
 [ext_resource type="AudioStream" uid="uid://drb1bm713ukd7" path="res://assets/sounds/BinSound.mp3" id="19_4uj4s"]
+[ext_resource type="Texture2D" uid="uid://cgqn48oliga62" path="res://assets/sprites/BinBasket.png" id="19_ki1q6"]
+[ext_resource type="Texture2D" uid="uid://bg14s1yst6oj0" path="res://assets/icons/CheckMarkIcon.png" id="21_5kjkg"]
 [ext_resource type="AudioStream" uid="uid://obhv0hj6ljvf" path="res://assets/sounds/correctSoundEffect.mp3" id="21_bnnba"]
 [ext_resource type="AudioStream" uid="uid://ch5awjf3wxilx" path="res://assets/sounds/incorrectSoundEffect.mp3" id="22_6sm6u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mqgq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jko1l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ytk0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg8u5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ci3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ki1q6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nu7cg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbuyy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q08at"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h65fk"]
 
 [node name="play_scene" type="Node2D"]
 script = ExtResource("1_dta8y")
@@ -136,13 +158,18 @@ polygon = PackedVector2Array(230, 362, 238, 349, 257, 347, 267, 349, 289, 355, 3
 metadata/_edit_lock_ = true
 
 [node name="ps_clear_plate_button" type="Button" parent="."]
-offset_left = 368.0
-offset_top = 407.0
-offset_right = 402.0
-offset_bottom = 438.0
+offset_left = 314.0
+offset_top = 455.0
+offset_right = 452.0
+offset_bottom = 662.0
 theme = ExtResource("3_bx6jv")
 theme_override_font_sizes/font_size = 25
-text = "🗑️"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5mqgq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jko1l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ytk0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kg8u5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ci3g")
+icon = ExtResource("19_ki1q6")
 script = ExtResource("14_63tcr")
 metadata/_edit_lock_ = true
 
@@ -151,13 +178,19 @@ stream = ExtResource("19_4uj4s")
 bus = &"SFX"
 
 [node name="ps_submit_order_button" type="Button" parent="."]
-offset_left = 364.0
-offset_top = 362.0
-offset_right = 404.0
-offset_bottom = 395.0
+offset_left = 367.0
+offset_top = 352.0
+offset_right = 415.0
+offset_bottom = 403.0
 theme = ExtResource("3_bx6jv")
 theme_override_font_sizes/font_size = 27
-text = "✅"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ki1q6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nu7cg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wbuyy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q08at")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h65fk")
+icon = ExtResource("21_5kjkg")
+icon_alignment = 1
 script = ExtResource("15_qhxom")
 metadata/_edit_lock_ = true
 
@@ -202,5 +235,9 @@ theme_override_font_sizes/font_size = 40
 [connection signal="mouse_exited" from="ps_green_pile_controller2" to="ps_green_pile_controller2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="ps_yellow_pile_controller2" to="ps_yellow_pile_controller2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ps_yellow_pile_controller2" to="ps_yellow_pile_controller2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="ps_clear_plate_button" to="ps_clear_plate_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ps_clear_plate_button" to="ps_clear_plate_button" method="_on_mouse_exited"]
 [connection signal="pressed" from="ps_clear_plate_button" to="ps_clear_plate_button" method="_on_pressed"]
+[connection signal="mouse_entered" from="ps_submit_order_button" to="ps_submit_order_button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ps_submit_order_button" to="ps_submit_order_button" method="_on_mouse_exited"]
 [connection signal="pressed" from="ps_submit_order_button" to="ps_submit_order_button" method="_on_pressed"]
