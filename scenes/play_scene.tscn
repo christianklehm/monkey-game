@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=24 format=3 uid="uid://b651dluwrvggx"]
 
-[ext_resource type="Texture2D" uid="uid://c5ug2fchiktah" path="res://assets/sprites/Temp_BarTransparentWithBacking.png" id="1_0auek"]
 [ext_resource type="Script" uid="uid://dce42qthirrx6" path="res://scripts/ps_play_scene.gd" id="1_dta8y"]
+[ext_resource type="Texture2D" uid="uid://boemdo31mm14u" path="res://assets/sprites/Background.png" id="2_053dl"]
 [ext_resource type="Script" uid="uid://wderf66mpnyq" path="res://scripts/ps_back_to_mm.gd" id="2_63tcr"]
+[ext_resource type="Texture2D" uid="uid://b2vim7ocxujab" path="res://assets/sprites/BarTransparent.png" id="3_5kjkg"]
 [ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="3_bx6jv"]
 [ext_resource type="Script" uid="uid://ccwy77fp00bdg" path="res://scripts/ps_red_pile_controller.gd" id="3_qhxom"]
 [ext_resource type="Texture2D" uid="uid://db6rcibakwevb" path="res://assets/sprites/Temp_PinkPeanuts_Dark.png" id="4_dta8y"]
@@ -28,7 +29,25 @@ script = ExtResource("1_dta8y")
 
 [node name="ps_background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
-texture = ExtResource("1_0auek")
+texture = ExtResource("2_053dl")
+metadata/_edit_lock_ = true
+
+[node name="ps_monkey_image" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 361.0
+offset_top = 185.0
+offset_right = 534.0
+offset_bottom = 485.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ps_foreground" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("3_5kjkg")
 metadata/_edit_lock_ = true
 
 [node name="ps_back_to_mm" type="Button" parent="."]
