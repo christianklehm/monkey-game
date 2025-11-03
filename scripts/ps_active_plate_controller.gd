@@ -44,6 +44,7 @@ func remove_peanut() -> void:
 		return
 	var last_peanut = placed_peanuts.pop_back()
 	remove_child(last_peanut)
+	$removeSinglePeanutSFX.play()
 	last_peanut.queue_free()
 
 func clear_plate() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b651dluwrvggx"]
+[gd_scene load_steps=38 format=3 uid="uid://b651dluwrvggx"]
 
 [ext_resource type="Script" uid="uid://dce42qthirrx6" path="res://scripts/ps_play_scene.gd" id="1_dta8y"]
 [ext_resource type="Texture2D" uid="uid://boemdo31mm14u" path="res://assets/sprites/Background.png" id="2_053dl"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://drb1bm713ukd7" path="res://assets/sounds/BinSound.mp3" id="19_4uj4s"]
 [ext_resource type="Texture2D" uid="uid://cgqn48oliga62" path="res://assets/sprites/BinBasket.png" id="19_ki1q6"]
 [ext_resource type="Texture2D" uid="uid://ba4fxgdenysur" path="res://assets/sprites/LeafPlateHover.png" id="19_nu7cg"]
+[ext_resource type="AudioStream" uid="uid://bhsld6jh854wj" path="res://assets/sounds/singlePeanutRemoveSFX.mp3" id="20_wbuyy"]
 [ext_resource type="Texture2D" uid="uid://bg14s1yst6oj0" path="res://assets/icons/CheckMarkIcon.png" id="21_5kjkg"]
 [ext_resource type="AudioStream" uid="uid://obhv0hj6ljvf" path="res://assets/sounds/correctSoundEffect.mp3" id="21_bnnba"]
 [ext_resource type="AudioStream" uid="uid://ch5awjf3wxilx" path="res://assets/sounds/incorrectSoundEffect.mp3" id="22_6sm6u"]
@@ -153,6 +154,10 @@ metadata/_edit_lock_ = true
 visible = false
 polygon = PackedVector2Array(230, 362, 238, 349, 257, 347, 267, 349, 289, 355, 315, 377, 340, 395, 348, 408, 344, 412, 324, 421, 307, 424, 274, 424, 245, 418, 225, 408, 211, 384, 212, 371, 219, 365)
 metadata/_edit_lock_ = true
+
+[node name="removeSinglePeanutSFX" type="AudioStreamPlayer" parent="ps_active_plate_controller"]
+stream = ExtResource("20_wbuyy")
+bus = &"SFX"
 
 [node name="ps_clear_plate_button" type="Button" parent="."]
 z_index = 3
