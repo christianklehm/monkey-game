@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://e23mw2b5j1vo" path="res://assets/sprites/Temp_TinyYellowPeanut.png" id="4_kxryc"]
 
 [node name="TinyPeanut" type="Node2D"]
+z_index = 4
 script = ExtResource("1_gpri6")
 red_texture = ExtResource("2_bnmg6")
 green_texture = ExtResource("3_dehg8")
 yellow_texture = ExtResource("4_kxryc")
 
 [node name="tiny_peanut_sprite" type="Sprite2D" parent="."]
+z_index = 4

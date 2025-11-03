@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://bhie5107lhmw6" path="res://scripts/mm_quit.gd" id="3_u4hxd"]
 [ext_resource type="Texture2D" uid="uid://bl7758ixui3" path="res://assets/sprites/woodenbacking.png" id="4_520ac"]
 [ext_resource type="Texture2D" uid="uid://blkcss4ekbiva" path="res://assets/icons/AudioIcon.png" id="5_u4hxd"]
-[ext_resource type="Script" uid="uid://bxq5p5t7g4vxp" path="res://scenes/ms_options.gd" id="6_6od1f"]
+[ext_resource type="Script" uid="uid://bxq5p5t7g4vxp" path="res://scripts/ms_options.gd" id="6_6od1f"]
+
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axson"]
 

@@ -1,5 +1,8 @@
 extends Area2D
 
+@export var default_texture: Texture2D
+@export var hover_texture: Texture2D
+
 @onready var placed_peanuts: Array = []
 const positions: Array = [ 	Vector2(253,360),
 							Vector2(232,380),
@@ -10,6 +13,12 @@ const positions: Array = [ 	Vector2(253,360),
 							Vector2(311,387),
 							Vector2(292,409),
 						]
+
+func _on_mouse_entered() -> void:
+	$ps_active_plate_sprite.texture = hover_texture
+
+func _on_mouse_exited() -> void:
+	$ps_active_plate_sprite.texture = default_texture
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -56,12 +65,4 @@ func get_color_count() -> Dictionary:
 		elif peanut.color == "yellow":
 			color_count_dict["yellow"] += 1
 	return color_count_dict
-	
-	
-	
-	
-	
-	
-	
-	
 	

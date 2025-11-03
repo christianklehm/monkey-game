@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmgtm01kec6tc"]
+[gd_scene load_steps=6 format=3 uid="uid://cmgtm01kec6tc"]
 
 [ext_resource type="Script" uid="uid://djkvshx63v3n5" path="res://scripts/nd_monkey.gd" id="1_rb1f4"]
 [ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="2_1uot1"]
+[ext_resource type="Texture2D" uid="uid://c6rdhsiorsfsb" path="res://assets/sprites/monkey2.png" id="2_x11h5"]
+[ext_resource type="Texture2D" uid="uid://d1tfjw3e4rga3" path="res://assets/sprites/monkey3.png" id="3_nandu"]
+[ext_resource type="Texture2D" uid="uid://c2d46q6kwrc0r" path="res://assets/sprites/monkey1.png" id="4_irmjr"]
 
 [node name="Monkey" type="Node2D"]
+z_index = 1
 script = ExtResource("1_rb1f4")
+texture_student = ExtResource("2_x11h5")
+texture_mom = ExtResource("3_nandu")
+texture_tourist = ExtResource("4_irmjr")
 
 [node name="monkey_order_display" type="Label" parent="."]
 visible = false
@@ -13,3 +20,5 @@ offset_bottom = 23.0
 theme = ExtResource("2_1uot1")
 theme_override_colors/font_color = Color(0.8090343, 0.55057555, 0.27189577, 1)
 theme_override_font_sizes/font_size = 40
+
+[node name="ps_monkey_image" type="Sprite2D" parent="."]
