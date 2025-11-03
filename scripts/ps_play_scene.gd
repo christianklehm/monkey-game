@@ -27,7 +27,7 @@ func create_monkey() -> void:
 	_set_random_monkey_type() # Added by Cherry
 
 func resolve_order() -> void:
-	if customers_so_far_today == max_customers_today:
+	if customers_so_far_today == max_customers_today: # Only after last customer
 		$ps_day_info_overlay/customer_number_display.text = "That was the last customer today!"
 		remove_child(active_monkey)
 		$ps_submit_order_button.hide()        # Added by Cherry

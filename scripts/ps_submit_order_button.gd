@@ -15,7 +15,12 @@ func _on_pressed() -> void:
 		await get_tree().create_timer(0.8).timeout  # waits 0.8 seconds
 		$order_result_message.hide()
 		$"..".resolve_order()
+		
+		$"../ps_active_plate_controller/removeSinglePeanutSFX".volume_db = -80
 		$"../ps_active_plate_controller".clear_plate()
+		await get_tree().create_timer(0.8).timeout
+		$"../ps_active_plate_controller/removeSinglePeanutSFX".volume_db = 0
+		
 	else:
 		$order_result_message.text = "Incorrect"
 		$order_result_message.position = Vector2(300, -200) #Coords relative to parent button
