@@ -22,5 +22,4 @@ func get_text() -> String:
 	var order_text = ""
 	for item in ["red", "green", "yellow"]:
 		order_text += "× " + str(line_items[item]) + "\n"
-		print(order_text)
 	return order_text

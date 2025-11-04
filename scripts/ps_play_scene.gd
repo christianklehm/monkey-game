@@ -33,6 +33,10 @@ func resolve_order() -> void:
 		$ps_submit_order_button.hide()        # Added by Cherry
 		active_monkey.queue_free()
 		active_monkey = null
+		
+		await get_tree().create_timer(0.8).timeout
+		get_tree().change_scene_to_file("res://scenes/end_day_screen.tscn")
+		
 	else:
 		remove_child(active_monkey)
 		active_monkey.queue_free()

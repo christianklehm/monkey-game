@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://xoord17xavps"]
+
+[ext_resource type="Script" uid="uid://gm2w4l1bpkrn" path="res://scenes/end_day_screen.gd" id="1_jl3uy"]
+[ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="1_s64rv"]
+[ext_resource type="Script" uid="uid://dodiywn311wod" path="res://scenes/start_next_day.gd" id="2_hokyp"]
+
+[node name="EndDayScreen" type="Node2D"]
+script = ExtResource("1_jl3uy")
+
+[node name="background" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0.9019608, 0.8784314, 0.7529412, 1)
+
+[node name="end_day__summary" type="Label" parent="."]
+offset_left = 409.0
+offset_top = 134.0
+offset_right = 761.0
+offset_bottom = 204.0
+theme = ExtResource("1_s64rv")
+theme_override_colors/font_color = Color(0.3254902, 0.30588236, 0.22352941, 1)
+theme_override_font_sizes/font_size = 70
+text = "End of Day"
+
+[node name="start_next_day" type="Button" parent="."]
+offset_left = 368.0
+offset_top = 415.0
+offset_right = 791.0
+offset_bottom = 509.0
+theme = ExtResource("1_s64rv")
+theme_override_colors/font_color = Color(0.7607843, 0.72156864, 0.5254902, 1)
+text = "Start Next Day"
+script = ExtResource("2_hokyp")
+
+[connection signal="pressed" from="start_next_day" to="start_next_day" method="_on_pressed"]
