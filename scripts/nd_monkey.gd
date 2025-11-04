@@ -13,14 +13,9 @@ func _ready() -> void:
 	add_child(new_order)
 	order = new_order
 
-func display_order() -> void:
-	$monkey_order_display.text = order.get_text()
-	$monkey_order_display.show()
-	$monkey_order_display.position = Vector2(268, 126)
-
 func display_monkey() -> void:
 	$ps_monkey_image.position = Vector2(586, 300)
-	display_order() #Currently, only calls display order
+	order.display_text() #Currently, only calls display order
 					#but more features added here later.
 					
 func hide_monkey() -> void:
