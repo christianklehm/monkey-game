@@ -1,10 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba7p25qxkh2b1"]
+[gd_scene load_steps=10 format=3 uid="uid://ba7p25qxkh2b1"]
 
 [ext_resource type="Script" uid="uid://c00im53bkdeb0" path="res://scripts/nd_order.gd" id="1_1jo6x"]
 [ext_resource type="Theme" uid="uid://8pav1lism70y" path="res://assets/main_theme.tres" id="2_nramy"]
+[ext_resource type="Texture2D" uid="uid://cxk3lwgid154m" path="res://assets/sprites/order_paper_sprite_sheet.png" id="2_wy35d"]
 [ext_resource type="Texture2D" uid="uid://cur5qg1vk7gde" path="res://assets/sprites/Temp_TinyPinkPeanut.png" id="3_wsyb0"]
 [ext_resource type="Texture2D" uid="uid://blc2q0u133atl" path="res://assets/sprites/Temp_TinyGreenPeanut.png" id="4_wy35d"]
 [ext_resource type="Texture2D" uid="uid://e23mw2b5j1vo" path="res://assets/sprites/Temp_TinyYellowPeanut.png" id="5_82rgs"]
+
+[sub_resource type="Animation" id="Animation_82rgs"]
+resource_name = "order_paper_drop"
+length = 0.65
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("order_paper_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_tddik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("order_paper_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6oul"]
+_data = {
+&"RESET": SubResource("Animation_tddik"),
+&"order_paper_drop": SubResource("Animation_82rgs")
+}
 
 [node name="Order" type="Node2D"]
 z_index = 3
@@ -16,7 +55,16 @@ offset_right = 1103.0
 offset_bottom = 240.0
 color = Color(0.7607843, 0.72156864, 0.5254902, 1)
 
+[node name="order_paper_sprite" type="Sprite2D" parent="."]
+position = Vector2(1022, 136)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_wy35d")
+hframes = 5
+vframes = 4
+metadata/_edit_lock_ = true
+
 [node name="text_display" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 theme = ExtResource("2_nramy")
@@ -27,13 +75,21 @@ theme_override_font_sizes/font_size = 44
 position = Vector2(979, 68)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_wsyb0")
+metadata/_edit_lock_ = true
 
 [node name="green_peanut" type="Sprite2D" parent="."]
 position = Vector2(974, 117)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_wy35d")
+metadata/_edit_lock_ = true
 
 [node name="yellow_peanut" type="Sprite2D" parent="."]
 position = Vector2(974, 171)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_82rgs")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b6oul")
+}
