@@ -5,3 +5,4 @@
 [resource]
 default_font = ExtResource("1_xgdp2")
 default_font_size = 54
+HSlider/styles/grabber_area = null
