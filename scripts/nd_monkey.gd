@@ -4,6 +4,7 @@ var order
 var monkey_type: String
 var monkey_texture: Texture2D
 
+
 @export var texture_student: Texture2D
 @export var texture_mom: Texture2D
 @export var texture_tourist: Texture2D
@@ -12,6 +13,7 @@ func _ready() -> void:
 	var new_order = preload("res://scenes/order.tscn").instantiate()
 	add_child(new_order)
 	order = new_order
+	order.anim_player.play("order_paper_drop")
 
 func display_monkey() -> void:
 	$ps_monkey_image.position = Vector2(586, 300)

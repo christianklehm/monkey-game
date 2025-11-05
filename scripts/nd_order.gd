@@ -1,7 +1,8 @@
-extends Node2D
+extends Control
 
 var line_items: Dictionary
-@onready var display = $text_display
+@onready var display = $RevealPanel/text_display
+@onready var anim_player = $AnimationPlayer
 
 func _ready() -> void:
 	name = "Active Order"
@@ -17,6 +18,7 @@ func display_text() -> void:
 	display.text = get_text()
 	display.position = Vector2(1005, 52)
 	display.show()
+	print(display.text)
 	
 func get_text() -> String:
 	var order_text = ""
