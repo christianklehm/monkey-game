@@ -9,3 +9,6 @@ export_presets.cfg
 *.log
 .DS_Store
 Thumbs.db
+
+# Godot Plugins
+addons/

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Global="*res://scripts/global.gd"
 AudioManager="*res://scripts/audio_manager.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/scene_tree_as_text/plugin.cfg", "res://addons/script_exporter/plugin.cfg")
+
 [input]
 
 InputEventMouseButton={

@@ -1,0 +1,537 @@
+--- SCRIPT: res://scripts/audio_manager.gd ---
+
+extends Node
+
+# Godot's built in audio 'buses' can be found at the bottom of the screen under 'Audio'
+
+var musicPlayer: AudioStreamPlayer
+var sfx_bus: int
+var music_bus: int
+
+func _ready():
+	sfx_bus   = AudioServer.get_bus_index("SFX") # sets sfx_bus to take value of Godot's audio manager SFX bus
+	music_bus = AudioServer.get_bus_index("Music") # sets music_bus to take value of Godot's audio manager Music bus
+	# Create and add an AudioStreamPlayer to the singleton
+	musicPlayer = AudioStreamPlayer.new()
+	musicPlayer.bus = "Music"          # make sure it routes to the Music bus
+	musicPlayer.connect("finished", Callable(self, "_on_music_finished")) # Makes it so the AudioStream node can signal finished
+	add_child(musicPlayer)
+	play_music(preload("res://assets/sounds/monkey-song-longer.mp3"))
+	
+	
+func play_music(stream: AudioStream):
+	musicPlayer.stream = stream
+	musicPlayer.play()
+
+func _on_music_finished():                                               # Should trigger the song to repeat when it finishes
+	play_music(preload("res://assets/sounds/monkey-song-longer.mp3"))
+
+func set_sfx_volume(linear: float) -> void: # translates bus decibels to be changed later in settings
+	# linear expected in [0.0, 1.0]
+	var db := -80.0 if linear <= 0.001 else linear_to_db(linear)
+	AudioServer.set_bus_volume_db(sfx_bus, db)
+
+func set_music_volume(linear: float) -> void: # same as above, but for music volume
+	# linear expected in [0.0, 1.0]
+	var db := -80.0 if linear <= 0.001 else linear_to_db(linear)
+	AudioServer.set_bus_volume_db(music_bus, db)
+	
+func get_sfx_linear() -> float:
+	var db := AudioServer.get_bus_volume_db(sfx_bus)
+	return 0.0 if db <= -79.9 else db_to_linear(db)
+
+func get_music_linear() -> float:
+	var db := AudioServer.get_bus_volume_db(music_bus)
+	return 0.0 if db <= -79.9 else db_to_linear(db)
+
+
+--- SCRIPT: res://scripts/end_day_screen.gd ---
+
+extends Node2D
+
+func _ready() -> void:
+	$end_day__summary	.text = "End of Day " + str(Global.current_day)
+
+
+--- SCRIPT: res://scripts/global.gd ---
+
+extends Node
+
+var current_day: int
+
+func _ready() -> void:
+	current_day = 1
+	
+
+
+--- SCRIPT: res://scripts/mm_quit.gd ---
+
+extends Button
+	
+func _on_pressed():
+	$ButtonClick.play() # Uses signal from AudioStreamPlayer to play sound
+
+
+func _on_button_click_finished() -> void: # Waits until sound finishes
+	get_tree().quit()
+
+
+--- SCRIPT: res://scripts/mm_start_game.gd ---
+
+extends Button
+	
+func _on_pressed():
+	$ButtonClick.play() # Uses signal from AudioStreamPlayer to play sound
+
+
+func _on_button_click_finished() -> void: # Waits until sound finishes
+	get_tree().change_scene_to_file("res://scenes/play_scene.tscn") # Changes scene
+
+
+--- SCRIPT: res://scripts/ms_options.gd ---
+
+extends Button
+	
+func _on_pressed():
+	$ButtonClick.play() # Uses signal from AudioStreamPlayer to play sound
+
+
+func _on_button_click_finished() -> void: # Waits until sound finishes
+	get_tree().change_scene_to_file("res://scenes/options_scene.tscn")
+
+
+--- SCRIPT: res://scripts/nd_monkey.gd ---
+
+extends Node2D
+
+var order
+var monkey_type: String
+var monkey_texture: Texture2D
+
+
+@export var texture_student: Texture2D
+@export var texture_mom: Texture2D
+@export var texture_tourist: Texture2D
+
+func _ready() -> void:
+	var new_order = preload("res://scenes/order.tscn").instantiate()
+	add_child(new_order)
+	order = new_order
+	order.anim_player.play("order_paper_drop")
+
+func display_monkey() -> void:
+	$ps_monkey_image.position = Vector2(586, 300)
+	order.display_text() #Currently, only calls display order
+					#but more features added here later.
+					
+func hide_monkey() -> void:
+	$monkey_order_display.hide()
+	
+func set_monkey_type(input_type: String) -> void:
+	monkey_type = input_type
+	
+	if monkey_type == "student":
+		monkey_texture = texture_student
+	if monkey_type == "mom":
+		monkey_texture = texture_mom
+	if monkey_type == "tourist":
+		monkey_texture = texture_tourist
+	$ps_monkey_image.texture = monkey_texture
+
+
+--- SCRIPT: res://scripts/nd_order.gd ---
+
+extends Control
+
+var line_items: Dictionary
+@onready var display = $RevealPanel/text_display
+@onready var anim_player = $AnimationPlayer
+
+func _ready() -> void:
+	name = "Active Order"
+	
+	# Generates a random int between 0 and 2 for each color.
+	line_items = {
+		"red": randi_range(0,2),
+		"green": randi_range(0,2),
+		"yellow": randi_range(0,2),
+	}
+
+func display_text() -> void:
+	display.text = get_text()
+	display.position = Vector2(1005, 52)
+	display.show()
+	print(display.text)
+	
+func get_text() -> String:
+	var order_text = ""
+	for item in ["red", "green", "yellow"]:
+		order_text += "× " + str(line_items[item]) + "\n"
+	return order_text
+
+
+--- SCRIPT: res://scripts/nd_tiny_peanut.gd ---
+
+extends Node2D
+
+# Create editor variables
+@export var color: String
+@export var red_texture: Texture2D
+@export var green_texture: Texture2D
+@export var yellow_texture: Texture2D
+
+# Connect child sprite node after initializaiton
+@onready var sprite: Sprite2D = $tiny_peanut_sprite
+
+# Custom initilization funtion to allow for input parameters
+# Must be called manually
+# Params: color is first	 , position vector is second
+func init(input_color: String, input_position: Vector2, input_name: String) -> void:
+	name = input_name
+	color = input_color
+	sprite.position = input_position
+	if color == "red":
+		sprite.texture = red_texture
+	if color == "green":
+		sprite.texture = green_texture
+	if color == "yellow":
+		sprite.texture = yellow_texture
+
+
+--- SCRIPT: res://scripts/options_scene.gd ---
+
+extends Node2D
+
+
+func _ready() -> void:
+	# Set without triggering the value_changed callbacks
+	$HBoxContainer/SFX_Volume_Slider.set_value_no_signal(AudioManager.get_sfx_linear())
+	$HBoxContainer2/Music_Volume_Slider.set_value_no_signal(AudioManager.get_music_linear())
+
+
+func _on_sfx_volume_slider_value_changed(value: float) -> void:
+	AudioManager.set_sfx_volume(value)
+
+func _on_music_volume_slider_value_changed(value: float) -> void:
+	AudioManager.set_music_volume(value)
+
+
+--- SCRIPT: res://scripts/ps_active_plate_controller.gd ---
+
+extends Area2D
+
+@export var default_texture: Texture2D
+@export var hover_texture: Texture2D
+
+@onready var placed_peanuts: Array = []
+const positions: Array = [ 	Vector2(253,360),
+							Vector2(232,380),
+							Vector2(267,368),
+							Vector2(243,392),
+							Vector2(283,375),
+							Vector2(266,401),
+							Vector2(311,387),
+							Vector2(292,409),
+						]
+
+func _on_mouse_entered() -> void:
+	$ps_active_plate_sprite.texture = hover_texture
+
+func _on_mouse_exited() -> void:
+	$ps_active_plate_sprite.texture = default_texture
+
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			remove_peanut()
+
+func get_next_position() -> Vector2:
+	var num_peanuts = len(placed_peanuts)
+	return positions[num_peanuts]
+
+func add_peanut(input_color:String) -> void:
+	if len(placed_peanuts) >= len(positions):
+		return
+	var new_peanut = preload("res://scenes/tiny_peanut.tscn").instantiate()
+	add_child(new_peanut)
+	new_peanut.init(input_color, #sets the peanut color
+					get_next_position(), #sets the peanut position
+					"Peanut_%d_%s" % [len(placed_peanuts)+1, input_color]) #gives the peanut a name
+	placed_peanuts.append(new_peanut)
+
+func remove_peanut() -> void:
+	if len(placed_peanuts) == 0:
+		return
+	var last_peanut = placed_peanuts.pop_back()
+	remove_child(last_peanut)
+	$removeSinglePeanutSFX.play()
+	last_peanut.queue_free()
+
+func clear_plate() -> void:
+	while len(placed_peanuts) > 0:
+		remove_peanut()
+	return
+
+func get_color_count() -> Dictionary:
+	var color_count_dict: Dictionary = {
+		"red": 0,
+		"green": 0,
+		"yellow": 0,
+	}
+	for peanut in placed_peanuts:
+		if peanut.color == "red":
+			color_count_dict["red"] += 1
+		elif peanut.color == "green":
+			color_count_dict["green"] += 1
+		elif peanut.color == "yellow":
+			color_count_dict["yellow"] += 1
+	return color_count_dict
+	
+
+
+--- SCRIPT: res://scripts/ps_back_to_mm.gd ---
+
+extends Button
+
+
+## Called when the node enters the scene tree for the first time.
+#func _ready() -> void:
+	#pass # Replace with function body.
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(_delta: float) -> void:
+	#pass
+	
+func _on_pressed():
+	$ButtonClick.play() # Uses signal from AudioStreamPlayer to play sound
+
+
+func _on_button_click_finished() -> void: # Waits until sound finishes
+	get_tree().change_scene_to_file("res://scenes/menu_scene.tscn") # Changes scene
+
+
+--- SCRIPT: res://scripts/ps_clear_plate_button.gd ---
+
+extends Button
+
+@onready var normal_icon = preload("res://assets/sprites/BinBasket.png")
+@onready var hover_icon = preload("res://assets/sprites/BinBasketHover.png")
+
+func _ready() -> void:
+	icon = normal_icon
+
+
+func _on_pressed() -> void:
+	$BinSFX.play()
+	get_node("../ps_active_plate_controller").clear_plate()
+
+func _on_mouse_entered() -> void:
+	icon = hover_icon
+
+func _on_mouse_exited() -> void:
+	icon = normal_icon
+
+
+--- SCRIPT: res://scripts/ps_green_pile_controller.gd ---
+
+extends Area2D
+
+@export var default_texture: Texture2D
+@export var hover_texture: Texture2D
+
+#var contents_dict = {
+	#"peanut 1": {
+		#"color": null
+		#position: [50, 80]
+	#}
+#}
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$ps_green_pile_sprite.texture = default_texture
+
+func _on_mouse_entered():
+	$ps_green_pile_sprite.texture = hover_texture
+
+func _on_mouse_exited():
+	$ps_green_pile_sprite.texture = default_texture
+
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			$AddPeanutSFX.play()
+			get_node("../ps_active_plate_controller").add_peanut("green")
+
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass
+
+
+--- SCRIPT: res://scripts/ps_play_scene.gd ---
+
+extends Node2D
+
+@onready var active_monkey
+@onready var max_customers_today = 4
+@onready var customers_so_far_today = 0
+
+@onready var monkey_img: TextureRect = $ps_monkey_image # Added by Cherry
+
+# list of possible monkeys
+const MONKEY_TYPES := [                        # Added by Cherry
+	"student",
+	"mom",
+	"tourist",
+]
+
+func _ready() -> void:
+	create_monkey()
+	
+
+func create_monkey() -> void:
+	customers_so_far_today += 1
+	$ps_day_info_overlay/customer_number_display.text = "Customer # "+str(customers_so_far_today)
+	var new_monkey = preload("res://scenes/monkey.tscn").instantiate() # Add new monkey "scene" to node tree
+	add_child(new_monkey)
+	active_monkey = new_monkey
+	active_monkey.display_monkey() # display_monkey is defined in nd_monkey.gd
+	_set_random_monkey_type() # Added by Cherry
+
+func resolve_order() -> void:
+	if customers_so_far_today == max_customers_today: # Only after last customer
+		$ps_day_info_overlay/customer_number_display.text = "That was the last customer today!"
+		remove_child(active_monkey)
+		$ps_submit_order_button.hide()        # Added by Cherry
+		active_monkey.queue_free()
+		active_monkey = null
+		
+		await get_tree().create_timer(0.8).timeout
+		get_tree().change_scene_to_file("res://scenes/end_day_screen.tscn")
+		
+	else:
+		remove_child(active_monkey)
+		active_monkey.queue_free()
+		active_monkey = null
+		create_monkey()
+		
+# This function checks whether the peanuts on the plate match the active order.
+# Called by the submit order button		
+func order_is_correct() -> bool:
+	var plate_color_counts = $"ps_active_plate_controller".get_color_count()
+	var check_result = false
+	if plate_color_counts == active_monkey.order.line_items:
+		check_result = true
+	return check_result
+
+# Picks a random type for the active monkey node from const
+func _set_random_monkey_type() -> void:
+	active_monkey.set_monkey_type(MONKEY_TYPES.pick_random())
+
+
+--- SCRIPT: res://scripts/ps_red_pile_controller.gd ---
+
+extends Area2D
+
+@export var default_texture: Texture2D
+@export var hover_texture: Texture2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$ps_red_pile_sprite.texture = default_texture
+
+func _on_mouse_entered():
+	$ps_red_pile_sprite.texture = hover_texture
+
+func _on_mouse_exited():
+	$ps_red_pile_sprite.texture = default_texture
+
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			$AddPeanutSFX.play()
+			get_node("../ps_active_plate_controller").add_peanut("red")
+
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass
+
+
+--- SCRIPT: res://scripts/ps_submit_order_button.gd ---
+
+extends Button
+
+@onready var normal_icon = preload("res://assets/icons/CheckMarkIcon.png")
+@onready var hover_icon = preload("res://assets/icons/CheckMarkIconHover.png")
+
+func _ready() -> void:
+	icon = normal_icon
+
+func _on_pressed() -> void:
+	if $"..".order_is_correct():
+		$order_result_message.text = "Correct!"
+		$order_result_message.position = Vector2(300, -200) #Coords relative to parent button
+		$order_result_message.show()
+		$correctSoundEffect.play()
+		await get_tree().create_timer(0.8).timeout  # waits 0.8 seconds
+		$order_result_message.hide()
+		$"..".resolve_order()
+		
+		$"../ps_active_plate_controller/removeSinglePeanutSFX".volume_db = -80
+		$"../ps_active_plate_controller".clear_plate()
+		await get_tree().create_timer(0.8).timeout
+		$"../ps_active_plate_controller/removeSinglePeanutSFX".volume_db = 0
+		
+	else:
+		$order_result_message.text = "Incorrect"
+		$order_result_message.position = Vector2(300, -200) #Coords relative to parent button
+		$order_result_message.show()
+		$incorrectSoundEffect.play()
+		await get_tree().create_timer(1.0).timeout  # waits 1 second
+		$order_result_message.hide()
+
+
+func _on_mouse_entered() -> void:
+	icon = hover_icon
+
+func _on_mouse_exited() -> void:
+	icon = normal_icon
+
+
+--- SCRIPT: res://scripts/ps_yellow_pile_controller.gd ---
+
+extends Area2D
+
+@export var default_texture: Texture2D
+@export var hover_texture: Texture2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$ps_yellow_pile_sprite.texture = default_texture
+
+func _on_mouse_entered():
+	$ps_yellow_pile_sprite.texture = hover_texture
+
+func _on_mouse_exited():
+	$ps_yellow_pile_sprite.texture = default_texture
+
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			$AddPeanutSFX.play()
+			get_node("../ps_active_plate_controller").add_peanut("yellow")
+
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass
+
+
+--- SCRIPT: res://scripts/start_next_day.gd ---
+
+extends Button
+
+func _on_pressed() -> void:
+	Global.current_day += 1
+	get_tree().change_scene_to_file("res://scenes/play_scene.tscn")
+
+

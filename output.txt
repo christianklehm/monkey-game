@@ -1,0 +1,82 @@
+end_day_screen.tscn:
+Node2D (name: "EndDayScreen", scene: "res://scenes/end_day_screen.tscn", script: "res://scripts/end_day_screen.gd")
+├── ColorRect (name: "background")
+├── Label (name: "end_day__summary")
+└── Button (name: "start_next_day", script: "res://scripts/start_next_day.gd")
+
+menu_scene.tscn:
+Control (name: "menu_scene", scene: "res://scenes/menu_scene.tscn")
+├── TextureRect
+├── TextureRect (name: "TextureRect2")
+├── TextureRect (name: "TextureRect3")
+├── HBoxContainer (name: "ms_button_box")
+│   ├── Button (name: "ms_start_game", script: "res://scripts/mm_start_game.gd")
+│   │   └── AudioStreamPlayer (name: "ButtonClick")
+│   └── Button (name: "ms_quit", script: "res://scripts/mm_quit.gd")
+│       └── AudioStreamPlayer (name: "ButtonClick")
+└── HBoxContainer (name: "ms_button_box2")
+    └── Button (name: "ms_options", script: "res://scripts/ms_options.gd")
+        └── AudioStreamPlayer (name: "ButtonClick")
+
+monkey.tscn:
+Node2D (name: "Monkey", scene: "res://scenes/monkey.tscn", script: "res://scripts/nd_monkey.gd")
+└── Sprite2D (name: "ps_monkey_image")
+
+options_scene.tscn:
+Node2D (name: "options_scene", scene: "res://scenes/options_scene.tscn", script: "res://scripts/options_scene.gd")
+├── Sprite2D (name: "Background")
+├── Button (name: "ps_back_to_mm", script: "res://scripts/ps_back_to_mm.gd")
+│   └── AudioStreamPlayer (name: "ButtonClick")
+├── HBoxContainer
+│   └── HSlider (name: "SFX_Volume_Slider")
+├── HBoxContainer (name: "HBoxContainer2")
+│   └── HSlider (name: "Music_Volume_Slider")
+├── Label
+└── Label (name: "Label2")
+
+order.tscn:
+Control (name: "Order", scene: "res://scenes/order.tscn", script: "res://scripts/nd_order.gd")
+├── Sprite2D (name: "order_paper_sprite")
+├── Control (name: "RevealPanel")
+│   ├── Label (name: "text_display")
+│   ├── Sprite2D (name: "red_peanut")
+│   ├── Sprite2D (name: "green_peanut")
+│   └── Sprite2D (name: "yellow_peanut")
+└── AnimationPlayer
+
+play_scene.tscn:
+Node2D (name: "play_scene", scene: "res://scenes/play_scene.tscn", script: "res://scripts/ps_play_scene.gd")
+├── Sprite2D (name: "ps_background")
+├── Sprite2D (name: "ps_foreground")
+├── Button (name: "ps_back_to_mm", script: "res://scripts/ps_back_to_mm.gd")
+│   └── AudioStreamPlayer (name: "ButtonClick")
+├── Area2D (name: "ps_red_pile_controller", script: "res://scripts/ps_red_pile_controller.gd")
+│   ├── Sprite2D (name: "ps_red_pile_sprite")
+│   ├── CollisionPolygon2D (name: "ps_red_pile_shape")
+│   └── AudioStreamPlayer (name: "AddPeanutSFX")
+├── Area2D (name: "ps_green_pile_controller2", script: "res://scripts/ps_green_pile_controller.gd")
+│   ├── Sprite2D (name: "ps_green_pile_sprite")
+│   ├── CollisionPolygon2D (name: "ps_green_pile_shape")
+│   └── AudioStreamPlayer (name: "AddPeanutSFX")
+├── Area2D (name: "ps_yellow_pile_controller2", script: "res://scripts/ps_yellow_pile_controller.gd")
+│   ├── Sprite2D (name: "ps_yellow_pile_sprite")
+│   ├── CollisionPolygon2D (name: "ps_yellow_pile_shape")
+│   └── AudioStreamPlayer (name: "AddPeanutSFX")
+├── Area2D (name: "ps_active_plate_controller", script: "res://scripts/ps_active_plate_controller.gd")
+│   ├── Sprite2D (name: "ps_active_plate_sprite")
+│   ├── CollisionPolygon2D (name: "ps_active_plate_shape")
+│   └── AudioStreamPlayer (name: "removeSinglePeanutSFX")
+├── Button (name: "ps_clear_plate_button", script: "res://scripts/ps_clear_plate_button.gd")
+│   └── AudioStreamPlayer (name: "BinSFX")
+├── Button (name: "ps_submit_order_button", script: "res://scripts/ps_submit_order_button.gd")
+│   ├── AudioStreamPlayer (name: "AddPeanutSFX")
+│   ├── AudioStreamPlayer (name: "correctSoundEffect")
+│   ├── AudioStreamPlayer (name: "incorrectSoundEffect")
+│   └── Label (name: "order_result_message")
+└── Control (name: "ps_day_info_overlay")
+    └── Label (name: "customer_number_display")
+
+tiny_peanut.tscn:
+Node2D (name: "TinyPeanut", scene: "res://scenes/tiny_peanut.tscn", script: "res://scripts/nd_tiny_peanut.gd")
+└── Sprite2D (name: "tiny_peanut_sprite")
+

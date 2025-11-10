@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func display_text() -> void:
 	display.text = get_text()
-	display.position = Vector2(1005, 52)
+	display.position = Vector2(81, 40)
 	display.show()
 	print(display.text)
 	

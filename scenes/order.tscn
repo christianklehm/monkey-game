@@ -112,7 +112,7 @@ offset_top = -15.0
 offset_right = -884.0
 offset_bottom = 30.0
 theme = ExtResource("2_nramy")
-theme_override_colors/font_color = Color(0.8090343, 0.55057555, 0.27189577, 1)
+theme_override_colors/font_color = Color(0.50817144, 0.3297495, 0.13152003, 1)
 theme_override_font_sizes/font_size = 44
 
 [node name="red_peanut" type="Sprite2D" parent="RevealPanel"]
